@@ -32,7 +32,7 @@ func AddNewContent(nDao *NotionDao) error {
 
 	failedCount := 0
 	for item := range rssContent {
-		fmt.Printf("%+v\n", *item.description)
+		
 		if (len(*item.description) > 2000) { 
 			*item.description = string([]rune(*item.description)[:2000])	
 		}
