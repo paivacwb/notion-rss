@@ -227,9 +227,9 @@ func (dao NotionDao) AddRssItem(item RssItem) error {
 				RichText: []notionapi.RichText{{
 					Type: notionapi.ObjectTypeText,
 					Text: notionapi.Text{
-						Content: string([]rune(*item.description)[:2000]),
+						Content: *item.description,
 					},
-					PlainText: Content: string([]rune(*item.description)[:2000]),
+					PlainText: *item.description,
 				},
 				},
 			},
