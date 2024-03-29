@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"time"
-	"unicode/utf8"
 )
 
 // NotionTask represents an independent unit of work to perform in Notion.so
