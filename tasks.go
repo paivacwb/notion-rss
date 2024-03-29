@@ -36,7 +36,7 @@ func AddNewContent(nDao *NotionDao) error {
 		if (len(*item.description) > 2000) { 
 			*item.description = string([]rune(*item.description)[:2000])	
 		}
-	
+		*item.description = strings.Replace(*item.description, "048&lt;br /&", "", -1)
 		err := nDao.AddRssItem(item)
 		if err != nil {
 			fmt.Printf("Could not create page for %s, URL: %s. Error: %s\n", item.title, item.link.String(), err.Error())
