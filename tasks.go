@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"time"
+	"unicode/utf8"
 )
 
 // NotionTask represents an independent unit of work to perform in Notion.so
@@ -32,6 +33,7 @@ func AddNewContent(nDao *NotionDao) error {
 
 	failedCount := 0
 	for item := range rssContent {
+		item.title := string([]rune(item.title)[:2000])
 		err := nDao.AddRssItem(item)
 		if err != nil {
 			fmt.Printf("Could not create page for %s, URL: %s. Error: %s\n", item.title, item.link.String(), err.Error())
