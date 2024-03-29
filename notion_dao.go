@@ -183,6 +183,7 @@ func GetImageUrl(x string) *string {
 
 // AddRssItem to Notion database as a single new page with Block content. On failure, no retry is attempted.
 func (dao NotionDao) AddRssItem(item RssItem) error {
+	fmt.Println("Olá, mundo!")
 	categories := make([]notionapi.Option, len(item.categories))
 	for i, c := range item.categories {
 		categories[i] = notionapi.Option{
