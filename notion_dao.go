@@ -8,6 +8,7 @@ import (
 	"regexp"
 	"strings"
 	"time"
+	"unicode/utf8"
 
 	"github.com/jomei/notionapi"
 )
@@ -226,9 +227,9 @@ func (dao NotionDao) AddRssItem(item RssItem) error {
 				RichText: []notionapi.RichText{{
 					Type: notionapi.ObjectTypeText,
 					Text: notionapi.Text{
-						Content: *item.description,
+						Content: string([]rune(*item.description)[:2000]),
 					},
-					PlainText: *item.description,
+					PlainText: Content: string([]rune(*item.description)[:2000]),
 				},
 				},
 			},
