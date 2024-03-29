@@ -33,7 +33,9 @@ func AddNewContent(nDao *NotionDao) error {
 
 	failedCount := 0
 	for item := range rssContent {
+		fmt.Println(item.title)
 		item.title := string([]rune(item.title)[:2000])
+		fmt.Println(item.title)
 		err := nDao.AddRssItem(item)
 		if err != nil {
 			fmt.Printf("Could not create page for %s, URL: %s. Error: %s\n", item.title, item.link.String(), err.Error())
